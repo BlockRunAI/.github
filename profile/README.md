@@ -20,21 +20,23 @@ No API keys. No accounts. Just fund a wallet and go.
 <img src="https://github-readme-stats.vercel.app/api/pin/?username=BlockRunAI&repo=ClawRouter&theme=dark" />
 </a>
 
-**Save 78% on LLM costs. Automatically.**
+**Save 92% on LLM costs. Automatically.**
 
 ```
-"What is 2+2?"            → DeepSeek        $0.27/M    saved 99%
-"Summarize this article"  → GPT-4o-mini     $0.60/M    saved 99%
-"Build a React component" → Claude Sonnet   $15.00/M   best balance
-"Prove this theorem"      → o3              $10.00/M   reasoning
+Simple math      → nvidia/gpt-oss-120b   FREE       saved 100%
+Summarization    → gemini-2.5-flash      $0.15/M    saved 99%
+Code generation  → grok-code-fast        $0.20/M    saved 99%
+Complex tasks    → gemini-3-pro          $2.00/M    saved 92%
+Reasoning        → grok-4-fast           $0.20/M    saved 99%
 ```
 
-- **30+ models** — OpenAI, Anthropic, Google, DeepSeek, xAI, Moonshot
-- **100% local routing** — 14-dimension weighted scoring in <1ms
+- **30+ models** — OpenAI, Anthropic, Google, DeepSeek, xAI, Moonshot, MiniMax
+- **100% local routing** — 15-dimension weighted scoring in <1ms
 - **x402 micropayments** — pay per request with USDC on Base
 
 ```bash
-openclaw plugins install @blockrun/clawrouter
+curl -fsSL https://blockrun.ai/ClawRouter-update | bash
+openclaw gateway restart
 ```
 
 ---
