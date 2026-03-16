@@ -15,11 +15,7 @@ No API keys. No accounts. Just fund a wallet and go.
 
 ---
 
-## Flagship Products
-
-<table>
-<tr>
-<td width="50%" valign="top">
+## Flagship Product
 
 ### [ClawRouter](https://github.com/BlockRunAI/ClawRouter)
 
@@ -35,29 +31,6 @@ The agent-native LLM router for [OpenClaw](https://openclaw.com). Routes every r
 ```bash
 curl -fsSL https://blockrun.ai/ClawRouter-update | bash
 ```
-
-</td>
-<td width="50%" valign="top">
-
-### [SocialClaw](https://github.com/BlockRunAI/socialclaw)
-
-**Grow your X/Twitter to 5M+ views in 3 months.**
-
-AI-powered social growth engine — trend detection, audience insights, engagement targets, KOL discovery.
-
-- **Works everywhere** — Claude Code, Codex, Gemini CLI, Cursor
-- **Real-time X data** — follower analytics, engagement metrics, trending topics
-- **Smart targeting** — find your audience, track competitors, optimize content
-- **No API keys** — pay per request with USDC
-
-```bash
-# Works as a Claude Code skill, Codex task, or Gemini CLI tool
-socialclaw brief @yourhandle
-```
-
-</td>
-</tr>
-</table>
 
 ---
 
@@ -79,7 +52,6 @@ Your App → ClawRouter (localhost) → BlockRun API → 41+ LLMs
 | Project | Description | Install |
 |---------|-------------|---------|
 | [ClawRouter](https://github.com/BlockRunAI/ClawRouter) | Smart LLM router — 41+ models, <1ms routing | `curl -fsSL https://blockrun.ai/ClawRouter-update \| bash` |
-| [SocialClaw](https://github.com/BlockRunAI/socialclaw) | X/Twitter growth engine — trends, KOLs, engagement | [Get Started](https://github.com/BlockRunAI/socialclaw#get-started) |
 | [blockrun-mcp](https://github.com/BlockRunAI/blockrun-mcp) | MCP server — use 30+ models in Claude Code | `npx @anthropic-ai/claude-code mcp add blockrun` |
 | [blockrun-llm](https://github.com/BlockRunAI/blockrun-llm) | Python SDK | `pip install blockrun-llm` |
 | [blockrun-llm-ts](https://github.com/BlockRunAI/blockrun-llm-ts) | TypeScript SDK | `npm install blockrun-llm` |
