@@ -7,7 +7,7 @@
 No API keys. No subscriptions. Fund a wallet and go.
 
 [![Website](https://img.shields.io/badge/blockrun.ai-visit-blue)](https://blockrun.ai)
-[![Franklin](https://img.shields.io/npm/v/@blockrun/runcode?label=Franklin&color=cb3837)](https://www.npmjs.com/package/@blockrun/runcode)
+[![Franklin](https://img.shields.io/npm/v/@blockrun/franklin?label=Franklin&color=cb3837)](https://www.npmjs.com/package/@blockrun/franklin)
 [![ClawRouter](https://img.shields.io/npm/v/@blockrun/clawrouter?label=ClawRouter&color=green)](https://www.npmjs.com/package/@blockrun/clawrouter)
 [![Telegram](https://img.shields.io/badge/Telegram-join-blue?logo=telegram)](https://t.me/blockrunAI)
 [![X](https://img.shields.io/badge/X-follow-black?logo=x)](https://x.com/BlockRunAI)
@@ -18,13 +18,13 @@ No API keys. No subscriptions. Fund a wallet and go.
 
 ## Flagship Products
 
-### [Franklin](https://github.com/BlockRunAI/runcode) — Open-source AI coding agent
+### [Franklin](https://github.com/BlockRunAI/franklin) — Open-source AI coding agent
 
 **41+ models. Pay per use. No subscription.**
 
-The open-source alternative to Claude Code and Cursor. Use any model, switch mid-session, pay only for what you use with USDC.
+The open-source alternative to Franklin and Cursor. Use any model, switch mid-session, pay only for what you use with USDC.
 
-| | Claude Code | Cursor | Aider | **Franklin** |
+| | Franklin | Cursor | Aider | **Franklin** |
 |---|---|---|---|---|
 | Models | Claude only | Mixed (limited) | Bring your key | **41+ models** |
 | Pricing | $200/mo | $20/mo + usage | Free + API costs | **Pay per request** |
@@ -32,14 +32,14 @@ The open-source alternative to Claude Code and Cursor. Use any model, switch mid
 | Open source | No | No | Yes | **Yes** |
 
 ```bash
-npm install -g @blockrun/runcode
-runcode setup base
-runcode
+npm install -g @blockrun/franklin
+franklin setup base
+franklin
 ```
 
-**Proxy mode** — use Franklin as a payment proxy behind Claude Code:
+**Proxy mode** — use Franklin as a payment proxy behind Franklin:
 ```bash
-runcode init    # auto-configures Claude Code to route through Franklin
+franklin init    # auto-configures Franklin to route through Franklin
 ```
 
 ---
@@ -58,9 +58,9 @@ curl -fsSL https://blockrun.ai/ClawRouter-update | bash
 
 ## Data + Intelligence
 
-### [BlockRun MCP](https://github.com/BlockRunAI/blockrun-mcp) — Real-time data for Claude Code
+### [BlockRun MCP](https://github.com/BlockRunAI/blockrun-mcp) — Real-time data for Franklin
 
-Markets, research, X/Twitter, crypto, image generation — all inside Claude Code. No API keys.
+Markets, research, X/Twitter, crypto, image generation — all inside Franklin. No API keys.
 
 ```bash
 claude mcp add blockrun npx -y @blockrun/mcp@latest
@@ -82,9 +82,9 @@ claude mcp add blockrun npx -y @blockrun/mcp@latest
 
 | Project | What | Install |
 |---------|------|---------|
-| [Franklin](https://github.com/BlockRunAI/runcode) | Open-source AI coding agent | `npm i -g @blockrun/runcode` |
+| [Franklin](https://github.com/BlockRunAI/franklin) | Open-source AI coding agent | `npm i -g @blockrun/franklin` |
 | [ClawRouter](https://github.com/BlockRunAI/ClawRouter) | Smart LLM router for OpenClaw | `curl -fsSL https://blockrun.ai/ClawRouter-update \| bash` |
-| [blockrun-mcp](https://github.com/BlockRunAI/blockrun-mcp) | Real-time data for Claude Code | `claude mcp add blockrun npx -y @blockrun/mcp@latest` |
+| [blockrun-mcp](https://github.com/BlockRunAI/blockrun-mcp) | Real-time data for Franklin | `claude mcp add blockrun npx -y @blockrun/mcp@latest` |
 | [awesome-finance-mcp](https://github.com/BlockRunAI/awesome-finance-mcp) | Curated finance MCP servers | — |
 | [polymarket-agent](https://github.com/BlockRunAI/polymarket-agent) | AI prediction market trading | `git clone` |
 | [alpha-mcp](https://github.com/BlockRunAI/alpha-mcp) | Crypto trading signals | `git clone` |
