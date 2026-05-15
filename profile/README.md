@@ -22,9 +22,9 @@ No API keys. No subscriptions. Fund a wallet and go.
 
 **41+ models. Pay per use. No subscription.**
 
-The open-source alternative to Franklin and Cursor. Use any model, switch mid-session, pay only for what you use with USDC.
+The open-source alternative to Claude Code and Cursor. Use any model, switch mid-session, pay only for what you use with USDC.
 
-| | Franklin | Cursor | Aider | **Franklin** |
+| | Claude Code | Cursor | Aider | **Franklin** |
 |---|---|---|---|---|
 | Models | Claude only | Mixed (limited) | Bring your key | **41+ models** |
 | Pricing | $200/mo | $20/mo + usage | Free + API costs | **Pay per request** |
@@ -37,9 +37,9 @@ franklin setup base
 franklin
 ```
 
-**Proxy mode** — use Franklin as a payment proxy behind Franklin:
+**Proxy mode** — use Franklin as a payment proxy behind Claude Code:
 ```bash
-franklin init    # auto-configures Franklin to route through Franklin
+franklin init    # auto-configures Claude Code to route through Franklin
 ```
 
 ---
@@ -58,9 +58,9 @@ curl -fsSL https://blockrun.ai/ClawRouter-update | bash
 
 ## Data + Intelligence
 
-### [BlockRun MCP](https://github.com/BlockRunAI/blockrun-mcp) — Real-time data for Franklin
+### [BlockRun MCP](https://github.com/BlockRunAI/blockrun-mcp) — Real-time data for Claude Code
 
-Markets, research, X/Twitter, crypto, image generation — all inside Franklin. No API keys.
+Markets, research, X/Twitter, crypto, image & video generation — all inside Claude Code. No API keys.
 
 ```bash
 claude mcp add blockrun npx -y @blockrun/mcp@latest
@@ -71,10 +71,16 @@ claude mcp add blockrun npx -y @blockrun/mcp@latest
 | `blockrun_search` | Web + news search | ~$0.01 |
 | `blockrun_exa` | Neural research (Exa) | $0.01 |
 | `blockrun_markets` | Polymarket, Kalshi | $0.001 |
-| `blockrun_twitter` | X/Twitter intelligence | per token |
+| `blockrun_x` | X/Twitter intelligence | per token |
 | `blockrun_dex` | DEX prices | free |
+| `blockrun_price` | Crypto price data | free |
 | `blockrun_image` | DALL-E 3, Flux | $0.02-0.08 |
+| `blockrun_video` | AI video generation | per second |
+| `blockrun_music` | AI music generation | per track |
 | `blockrun_chat` | GPT, Gemini, DeepSeek, 30+ | per token |
+| `blockrun_wallet` | Wallet balance & history | free |
+| `blockrun_modal` | Run code on Modal | per run |
+| `blockrun_models` | Model catalog & pricing | free |
 
 ---
 
@@ -84,12 +90,12 @@ claude mcp add blockrun npx -y @blockrun/mcp@latest
 |---------|------|---------|
 | [Franklin](https://github.com/BlockRunAI/franklin) | Open-source AI coding agent | `npm i -g @blockrun/franklin` |
 | [ClawRouter](https://github.com/BlockRunAI/ClawRouter) | Smart LLM router for OpenClaw | `curl -fsSL https://blockrun.ai/ClawRouter-update \| bash` |
-| [blockrun-mcp](https://github.com/BlockRunAI/blockrun-mcp) | Real-time data for Franklin | `claude mcp add blockrun npx -y @blockrun/mcp@latest` |
+| [blockrun-mcp](https://github.com/BlockRunAI/blockrun-mcp) | Real-time data for Claude Code | `claude mcp add blockrun npx -y @blockrun/mcp@latest` |
 | [awesome-finance-mcp](https://github.com/BlockRunAI/awesome-finance-mcp) | Curated finance MCP servers | — |
 | [polymarket-agent](https://github.com/BlockRunAI/polymarket-agent) | AI prediction market trading | `git clone` |
 | [alpha-mcp](https://github.com/BlockRunAI/alpha-mcp) | Crypto trading signals | `git clone` |
 | [blockrun-llm](https://github.com/BlockRunAI/blockrun-llm) | Python SDK | `pip install blockrun-llm` |
-| [blockrun-llm-ts](https://github.com/BlockRunAI/blockrun-llm-ts) | TypeScript SDK | `npm i blockrun-llm` |
+| [blockrun-llm-ts](https://github.com/BlockRunAI/blockrun-llm-ts) | TypeScript SDK | `npm i @blockrun/llm` |
 
 ---
 
