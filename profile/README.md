@@ -20,13 +20,13 @@ No API keys. No subscriptions. Fund a wallet and go.
 
 ### [Franklin](https://github.com/BlockRunAI/Franklin) — Open-source AI coding agent
 
-**60+ models. Pay per use. No subscription.**
+**61 models. Pay per use. No subscription.**
 
 The open-source alternative to Claude Code and Cursor. Use any model, switch mid-session, pay only for what you use with USDC.
 
 | | Claude Code | Cursor | Aider | **Franklin** |
 |---|---|---|---|---|
-| Models | Claude only | Mixed (limited) | Bring your key | **60+ models** |
+| Models | Claude only | Mixed (limited) | Bring your key | **61 models** |
 | Pricing | $200/mo | $20/mo + usage | Free + API costs | **Pay per request** |
 | Payment | Credit card | Credit card | API keys | **USDC** |
 | Open source | No | No | Yes | **Yes** |
@@ -60,8 +60,8 @@ curl -fsSL https://blockrun.ai/ClawRouter-update | bash
 
 One wallet, one API — text, images, video, music, real-time data, and real-person video IP.
 
-- **Chat** — 60+ LLMs (GPT, Claude, Gemini, Grok, DeepSeek, Kimi, GLM, MiniMax, Llama) — OpenAI-compatible
-- **Images** — gpt-image-2, Nano Banana Pro, Flux, Grok Imagine
+- **Chat** — 61 LLMs (GPT, Claude, Gemini, Grok, Qwen, DeepSeek, Kimi, GLM, MiniMax, Llama) — OpenAI-compatible
+- **Images** — gpt-image-2, Nano Banana Pro, CogView-4, Grok Imagine
 - **Video** — ByteDance Seedance 2.0 + OpenAI Sora 2, with synced audio
 - **Music** — MiniMax Music, full tracks per call
 - **RealFace** — enroll a real person's likeness for Seedance video ($0.01, no KYC)
@@ -81,19 +81,24 @@ claude mcp add blockrun npx -y @blockrun/mcp@latest
 
 | Tool | What | Cost |
 |------|------|------|
-| `blockrun_search` | Web + news search | ~$0.01 |
-| `blockrun_exa` | Neural research (Exa) | $0.01 |
-| `blockrun_markets` | Polymarket, Kalshi | $0.001 |
-| `blockrun_x` | X/Twitter intelligence | per token |
-| `blockrun_dex` | DEX prices | free |
-| `blockrun_price` | Crypto price data | free |
-| `blockrun_image` | gpt-image-2, Nano Banana Pro, Flux | $0.02-0.10 |
-| `blockrun_video` | AI video generation | per second |
-| `blockrun_music` | AI music generation | per track |
-| `blockrun_chat` | GPT, Claude, Gemini, DeepSeek, 60+ | per token |
-| `blockrun_wallet` | Wallet balance & history | free |
-| `blockrun_modal` | Run code on Modal | per run |
+| `blockrun_chat` | GPT, Claude, Gemini, Grok, Qwen, DeepSeek — 61 models | per token |
+| `blockrun_image` | gpt-image-2, Nano Banana Pro, Grok Imagine | $0.02–0.10 |
+| `blockrun_video` | Sora 2, Seedance 2.0, with synced audio | per second |
+| `blockrun_music` | MiniMax music — full tracks | per track |
+| `blockrun_speech` | ElevenLabs TTS + sound effects | from $0.05/1k chars |
+| `blockrun_realface` | Real-person video — liveness enrollment | $0.01 |
+| `blockrun_search` | Live web + news (Grok) | ~$0.01 |
+| `blockrun_exa` | Neural research (Exa) — answers, contents | $0.002–0.012 |
+| `blockrun_markets` | Polymarket, Kalshi, sports odds | $0.001 |
+| `blockrun_surf` | Crypto data — 80+ on-chain endpoints | from $0.003 |
+| `blockrun_price` | Pyth quotes — crypto, FX, stocks | free |
+| `blockrun_dex` | Live DEX prices (DexScreener) | free |
+| `blockrun_rpc` | Raw JSON-RPC — 40+ chains | $0.004 |
+| `blockrun_defi` | DefiLlama — TVL, yields, token prices | per call |
+| `blockrun_modal` | Sandboxed code exec — optional GPU | per run |
+| `blockrun_phone` | AI voice calls + US/CA numbers | $0.54/call |
 | `blockrun_models` | Model catalog & pricing | free |
+| `blockrun_wallet` | USDC balance & agent budgets | free |
 
 ---
 
@@ -132,7 +137,7 @@ Your App / Agent
                 + gas-free batched USDC on Polygon / Arbitrum /
                   Optimism / Unichain via Circle Gateway)
       ↓
-  60+ models + real-time data + image / video / music
+  61 models + real-time data + image / video / music
 ```
 
 **Payment IS authentication.** No API keys — your wallet signature proves you can pay.
