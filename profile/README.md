@@ -18,7 +18,7 @@ No API keys. No subscriptions. Fund a wallet and go.
 
 ## Flagship Products
 
-### [Franklin](https://github.com/BlockRunAI/Franklin) — Open-source AI coding agent
+### [Franklin](https://github.com/BlockRunAI/Franklin) — Open-source AI agent with wallet
 
 **61 models. Pay per use. No subscription.**
 
