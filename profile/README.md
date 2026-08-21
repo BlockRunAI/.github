@@ -7,6 +7,7 @@
 No API keys. No subscriptions. Fund a wallet and go.
 
 [![Website](https://img.shields.io/badge/blockrun.ai-visit-blue)](https://blockrun.ai)
+[![Open Source](https://img.shields.io/badge/open--source-index-green)](https://blockrun.ai/open-source)
 [![Franklin](https://img.shields.io/npm/v/@blockrun/franklin?label=Franklin&color=cb3837)](https://www.npmjs.com/package/@blockrun/franklin)
 [![ClawRouter](https://img.shields.io/npm/v/@blockrun/clawrouter?label=ClawRouter&color=green)](https://www.npmjs.com/package/@blockrun/clawrouter)
 [![Telegram](https://img.shields.io/badge/Telegram-join-blue?logo=telegram)](https://t.me/blockrunAI)
@@ -20,13 +21,13 @@ No API keys. No subscriptions. Fund a wallet and go.
 
 ### [Franklin](https://github.com/BlockRunAI/Franklin) — Open-source AI agent with wallet
 
-**61 models. Pay per use. No subscription.**
+**Every frontier model. Pay per use. No subscription.**
 
 The open-source alternative to Claude Code and Cursor. Use any model, switch mid-session, pay only for what you use with USDC.
 
 | | Claude Code | Cursor | Aider | **Franklin** |
 |---|---|---|---|---|
-| Models | Claude only | Mixed (limited) | Bring your key | **61 models** |
+| Models | Claude only | Mixed (limited) | Bring your key | **Every frontier model** |
 | Pricing | $200/mo | $20/mo + usage | Free + API costs | **Pay per request** |
 | Payment | Credit card | Credit card | API keys | **USDC** |
 | Open source | No | No | Yes | **Yes** |
@@ -46,7 +47,7 @@ franklin init    # auto-configures Claude Code to route through Franklin
 
 ### [ClawRouter](https://github.com/BlockRunAI/ClawRouter) — Smart LLM router for OpenClaw
 
-**Save 40-92% on LLM costs. Automatically.**
+**Cut LLM costs automatically — route every request to the cheapest capable model.**
 
 Routes every request to the cheapest model that can handle it. 15-dimension weighted scoring in <1ms.
 
@@ -60,7 +61,7 @@ curl -fsSL https://blockrun.ai/ClawRouter-update | bash
 
 One wallet, one API — text, images, video, music, real-time data, and real-person video IP.
 
-- **Chat** — 61 LLMs (GPT, Claude, Gemini, Grok, Qwen, DeepSeek, Kimi, GLM, MiniMax, Llama) — OpenAI-compatible
+- **Chat** — every frontier LLM (GPT, Claude, Gemini, Grok, Qwen, DeepSeek, Kimi, GLM, MiniMax, Llama) — OpenAI-compatible
 - **Images** — gpt-image-2, Nano Banana Pro, CogView-4, Grok Imagine
 - **Video** — ByteDance Seedance 2.0 + OpenAI Sora 2, with synced audio
 - **Music** — MiniMax Music, full tracks per call
@@ -81,7 +82,7 @@ claude mcp add blockrun npx -y @blockrun/mcp@latest
 
 | Tool | What | Cost |
 |------|------|------|
-| `blockrun_chat` | GPT, Claude, Gemini, Grok, Qwen, DeepSeek — 61 models | per token |
+| `blockrun_chat` | GPT, Claude, Gemini, Grok, Qwen, DeepSeek — the full catalog | per token |
 | `blockrun_image` | gpt-image-2, Nano Banana Pro, Grok Imagine | $0.02–0.10 |
 | `blockrun_video` | Sora 2, Seedance 2.0, with synced audio | per second |
 | `blockrun_music` | MiniMax music — full tracks | per track |
@@ -137,7 +138,7 @@ Your App / Agent
                 + gas-free batched USDC on Polygon / Arbitrum /
                   Optimism / Unichain via Circle Gateway)
       ↓
-  61 models + real-time data + image / video / music
+  every frontier model + real-time data + image / video / music
 ```
 
 **Payment IS authentication.** No API keys — your wallet signature proves you can pay.
