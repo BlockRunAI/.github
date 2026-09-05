@@ -20,16 +20,34 @@ Sign up with a credit card and get an API key, or pay per call from a wallet wit
 
 ## Two ways in
 
-Same models, same prices, same OpenAI-compatible endpoint. Pick the door that fits you.
+Choose account API billing or wallet billing. Each mode uses its own gateway.
 
 | | **API key** | **Wallet** |
 |---|---|---|
 | Sign up | [user.blockrun.ai](https://user.blockrun.ai) — email + credit card | None. Fund a wallet and go |
 | Auth | Your API key | The payment signature itself |
-| Billing | Card top-up or monthly invoice, in dollars | Settled per call in USDC (Base or Solana) |
+| Billing | Card top-up or monthly invoice, in dollars | Settled per call in USDC (Solana or Base) |
 | Best for | Teams, existing OpenAI-compatible code, finance that wants an invoice | Autonomous agents — they can hold USDC, they can't hold a card |
 
-Either way it's the same deal: every call is quoted in dollars **before it runs** and billed at exact usage. No subscription, no seats, no minimum top-up, no prepaid credits that expire.
+### Start with an API key
+
+[Register](https://user.blockrun.ai), [create an API key](https://user.blockrun.ai/dashboard/keys), and [add credits](https://user.blockrun.ai/dashboard/credits). Store `BLOCKRUN_API_KEY` in your server environment.
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(api_key=os.environ["BLOCKRUN_API_KEY"], base_url="https://api.blockrun.ai/v1")
+response = client.chat.completions.create(
+    model="openai/gpt-4.1-nano",
+    messages=[{"role": "user", "content": "Hello!"}],
+)
+print(response.choices[0].message.content)
+```
+
+Account API access is live now. SDK, Franklin and ClawRouter account onboarding updates are rolling out through their repositories; use a release containing the relevant API support change or build that branch. Account credits and wallet balances are separate. See the account dashboard for usage and billing.
+
+For native wallet access, prefer **Solana** at [sol.blockrun.ai](https://sol.blockrun.ai), followed by **Base** at [blockrun.ai](https://blockrun.ai). Existing chain selections remain supported.
 
 ---
 
@@ -50,9 +68,11 @@ The open-source alternative to Claude Code and Cursor. Use any model, switch mid
 
 ```bash
 npm install -g @blockrun/franklin
-franklin setup base
+franklin setup solana
 franklin
 ```
+
+With the [Franklin account API update](https://github.com/BlockRunAI/Franklin/pull/156), set `BLOCKRUN_API_KEY` and run `franklin start`; no wallet setup is needed for account-billed models and tools. Trades and other wallet signatures still require a transaction wallet.
 
 **Proxy mode** — use Franklin as a payment proxy behind Claude Code:
 ```bash
@@ -153,7 +173,7 @@ Your App / Agent
   BlockRun API — one OpenAI-compatible endpoint, priced per call
       ↓
   API key  ────  card top-up or monthly invoice, in dollars
-  Wallet   ────  x402 micropayments, USDC on Base & Solana
+  Wallet   ────  x402 micropayments, USDC on Solana & Base
                  (+ gas-free batched USDC on Polygon / Arbitrum /
                    Optimism / Unichain via Circle Gateway)
       ↓
