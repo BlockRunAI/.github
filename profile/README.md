@@ -2,15 +2,14 @@
 
 # BlockRun
 
-**BlockRun lets agents pay for the outcome — every LLM, tool and data source, best value per dollar.**
+### Agents spend money. We measure.
 
-Sign up with a credit card and get an API key, or pay per call from a wallet with no account.
+BlockRun independently tests AI agents that move money: did they pay the right party the right amount, avoid being scammed, stay within their mandate, and tell the truth afterwards. Scored from the ledger, not by a model judge.
 
 [![Website](https://img.shields.io/badge/blockrun.ai-visit-blue)](https://blockrun.ai)
-[![Get started](https://img.shields.io/badge/user.blockrun.ai-sign%20up-brightgreen)](https://user.blockrun.ai)
-[![Open Source](https://img.shields.io/badge/open--source-index-green)](https://blockrun.ai/open-source)
-[![Franklin](https://img.shields.io/npm/v/@blockrun/franklin?label=Franklin&color=cb3837)](https://www.npmjs.com/package/@blockrun/franklin)
-[![ClawRouter](https://img.shields.io/npm/v/@blockrun/clawrouter?label=ClawRouter&color=green)](https://www.npmjs.com/package/@blockrun/clawrouter)
+[![Agent testing](https://img.shields.io/badge/agent%20testing-learn%20more-black)](https://blockrun.ai/agent-testing)
+[![Developers](https://img.shields.io/badge/developers-get%20an%20API%20key-brightgreen)](https://blockrun.ai/developers)
+[![ClawRouter](https://img.shields.io/github/stars/BlockRunAI/ClawRouter?label=ClawRouter&style=flat&color=green)](https://github.com/BlockRunAI/ClawRouter)
 [![Telegram](https://img.shields.io/badge/Telegram-join-blue?logo=telegram)](https://t.me/blockrunAI)
 [![X](https://img.shields.io/badge/X-follow-black?logo=x)](https://x.com/BlockRunAI)
 
@@ -18,20 +17,69 @@ Sign up with a credit card and get an API key, or pay per call from a wallet wit
 
 ---
 
-## Two ways in
+## Why we can measure it
 
-Choose account API billing or wallet billing. Each mode uses its own gateway.
+We run a gateway where agents pay per call, and every payment settles. So we see every payment an agent gets wrong, and what each dollar actually bought. Everything we build reads those same settled payments.
 
-| | **API key** | **Wallet** |
+| | For | What you get |
 |---|---|---|
-| Sign up | [user.blockrun.ai](https://user.blockrun.ai) — email + credit card | None. Fund a wallet and go |
-| Auth | Your API key | The payment signature itself |
-| Billing | Card top-up or monthly invoice, in dollars | Settled per call in USDC (Solana or Base) |
-| Best for | Teams, existing OpenAI-compatible code, finance that wants an invoice | Autonomous agents — they can hold USDC, they can't hold a card |
+| **[Verified Eval](https://blockrun.ai/benchmark)** | Financial institutions, agent builders | Your own production cases, run across models and harnesses and graded by code. Where the agent moves money, we check it paid the right party the right amount, within its limits, and said so truthfully. You see which setup holds up, and what each completed task costs. |
+| **[RL environments](https://blockrun.ai/ai-labs)** | AI labs | Money-moving tasks built to order: agents that pay for real, scored by the settlement ledger instead of a judge. Every task synthesized by us. No customer data. |
+| **[Developer API](https://blockrun.ai/developers)** | Developers | One OpenAI-compatible endpoint for models, tools and data, each call priced before it runs. |
 
-### Start with an API key
+**[Talk to us about an evaluation →](https://blockrun.ai/contact)**
 
-[Register](https://user.blockrun.ai), [create an API key](https://user.blockrun.ai/dashboard/keys), and [add credits](https://user.blockrun.ai/dashboard/credits). Store `BLOCKRUN_API_KEY` in your server environment.
+---
+
+## Open source
+
+The open-source half of BlockRun runs on your side, not ours.
+
+### [ClawRouter](https://github.com/BlockRunAI/ClawRouter) — the agent-native LLM router
+
+Picks the cheapest model that can do the job on every request, locally, in under a millisecond, with no inference call. One wallet instead of an account at every lab.
+
+```bash
+curl -fsSL https://blockrun.ai/ClawRouter-update | bash
+```
+
+Built on **[router-core](https://github.com/BlockRunAI/router-core)**: classify, hard-filter on capability, then rank on task fit, cost, speed and reliability. Deterministic. Also powers Franklin and every ClawRouter port below.
+
+| Port | Where it runs |
+|---|---|
+| [ClawRouter-Hermes](https://github.com/BlockRunAI/ClawRouter-Hermes) | NousResearch Hermes — one provider block replaces an account at every lab |
+| [dsh-clawrouter](https://github.com/BlockRunAI/dsh-clawrouter) | DeepSeek Harness — a stronger model reviews dangerous tool calls before they run |
+| [clawrouter-codex](https://github.com/BlockRunAI/clawrouter-codex) | OpenAI Codex CLI and Desktop, via the Responses API |
+| [XClawRouter](https://github.com/BlockRunAI/XClawRouter) | OKX OnchainOS wallet |
+
+### [Franklin](https://github.com/BlockRunAI/Franklin) — the AI agent with a wallet
+
+An open-source agent that spends from its own budget to get real work done. Any model, switch mid-session, pay only for what it uses.
+
+```bash
+npm install -g @blockrun/franklin
+franklin
+```
+
+Also: [Franklin-Trading](https://github.com/BlockRunAI/Franklin-Trading) (a trading agent with a wallet) · [franklin-canvas](https://github.com/BlockRunAI/franklin-canvas) (image, video and music on an infinite canvas).
+
+### [BlockRun MCP](https://github.com/BlockRunAI/blockrun-mcp) — live data and media inside your agent
+
+Search, research, markets, crypto, X/Twitter, image, video, music and speech as tools for Claude Code, Cursor and ChatGPT.
+
+```bash
+claude mcp add blockrun npx -y @blockrun/mcp@latest
+```
+
+Plugins with a spend gate and a cost meter: [blockrun-claude-plugin](https://github.com/BlockRunAI/blockrun-claude-plugin) (Claude Code) · [blockrun-codex-plugin](https://github.com/BlockRunAI/blockrun-codex-plugin) (OpenAI Codex).
+
+---
+
+## Developer API
+
+Two ways in: pay per call with no account, or get an API key and a monthly invoice.
+
+**With an API key.** [Get a key](https://user.blockrun.ai), add credits by card, and point any OpenAI client at BlockRun:
 
 ```python
 import os
@@ -39,155 +87,35 @@ from openai import OpenAI
 
 client = OpenAI(api_key=os.environ["BLOCKRUN_API_KEY"], base_url="https://api.blockrun.ai/v1")
 response = client.chat.completions.create(
-    model="openai/gpt-4.1-nano",
+    model="deepseek/deepseek-v4.1-flash",
     messages=[{"role": "user", "content": "Hello!"}],
 )
 print(response.choices[0].message.content)
 ```
 
-Account API access is live now. SDK, Franklin and ClawRouter account onboarding updates are rolling out through their repositories; use a release containing the relevant API support change or build that branch. Account credits and wallet balances are separate. See the account dashboard for usage and billing.
+**With a wallet.** No account and no credential to hand over: the signature that pays also proves who is calling, which is why an autonomous agent can use it. Settled per call in USDC over [x402](https://x402.org), on [Solana](https://sol.blockrun.ai) or [Base](https://blockrun.ai).
 
-For native wallet access, prefer **Solana** at [sol.blockrun.ai](https://sol.blockrun.ai), followed by **Base** at [blockrun.ai](https://blockrun.ai). Existing chain selections remain supported.
+Models, tools and live prices: [blockrun.ai/models](https://blockrun.ai/models) · [blockrun.ai/pricing](https://blockrun.ai/pricing) · [`GET /api/v1/models`](https://blockrun.ai/api/v1/models). Some open-weight models are [free](https://blockrun.ai/free), no card and no signup.
 
----
+### SDKs
 
-## Flagship Products
+| Language | Repo | Install |
+|---|---|---|
+| Python | [blockrun-llm](https://github.com/BlockRunAI/blockrun-llm) | `pip install blockrun-llm` |
+| TypeScript | [blockrun-llm-ts](https://github.com/BlockRunAI/blockrun-llm-ts) | `npm i @blockrun/llm` |
+| Go | [blockrun-llm-go](https://github.com/BlockRunAI/blockrun-llm-go) | `go get github.com/BlockRunAI/blockrun-llm-go` |
+| LiteLLM | [blockrun-litellm](https://github.com/BlockRunAI/blockrun-litellm) | custom provider or local proxy |
+| Native passthrough | [blockrun-llm-vip](https://github.com/BlockRunAI/blockrun-llm-vip) · [blockrun-llm-go-vip](https://github.com/BlockRunAI/blockrun-llm-go-vip) | official Anthropic and OpenAI SDKs, responses verbatim |
+| Gas-free batched USDC | [blockrun-nano-client](https://github.com/BlockRunAI/blockrun-nano-client) | via Circle Gateway |
 
-### [Franklin](https://github.com/BlockRunAI/Franklin) — Open-source AI agent with wallet
-
-**Every frontier model. Pay per use. No subscription.**
-
-The open-source alternative to Claude Code and Cursor. Use any model, switch mid-session, pay only for what you use.
-
-| | Claude Code | Cursor | Aider | **Franklin** |
-|---|---|---|---|---|
-| Models | Claude only | Mixed (limited) | Bring your key | **Every frontier model** |
-| Pricing | $200/mo | $20/mo + usage | Free + API costs | **Pay per request** |
-| Payment | Credit card | Credit card | Your own API keys | **Credit card or USDC** |
-| Open source | No | No | Yes | **Yes** |
-
-```bash
-npm install -g @blockrun/franklin
-franklin setup solana
-franklin
-```
-
-With the [Franklin account API update](https://github.com/BlockRunAI/Franklin/pull/156), set `BLOCKRUN_API_KEY` and run `franklin start`; no wallet setup is needed for account-billed models and tools. Trades and other wallet signatures still require a transaction wallet.
-
-**Proxy mode** — use Franklin as a payment proxy behind Claude Code:
-```bash
-franklin init    # auto-configures Claude Code to route through Franklin
-```
-
----
-
-### [ClawRouter](https://github.com/BlockRunAI/ClawRouter) — Smart LLM router for OpenClaw
-
-**Cut LLM costs automatically — route every request to the cheapest capable model.**
-
-Routes every request to the cheapest model that can handle it — 15-dimension weighted scoring in <1ms. This is where "best value per dollar" is earned, and it's open source.
-
-```bash
-curl -fsSL https://blockrun.ai/ClawRouter-update | bash
-```
-
----
-
-## Everything you can pay for, per call
-
-One account or one wallet, one API — text, images, video, music, real-time data, and real-person video IP.
-
-- **Chat** — every frontier LLM (GPT, Claude, Gemini, Grok, Qwen, DeepSeek, Kimi, GLM, MiniMax, Llama) — OpenAI-compatible
-- **Images** — gpt-image-2, Nano Banana Pro, CogView-4, Grok Imagine
-- **Video** — ByteDance Seedance 2.0 + OpenAI Sora 2, with synced audio
-- **Music** — MiniMax Music, full tracks per call
-- **RealFace** — enroll a real person's likeness for Seedance video ($0.01, no KYC)
-- **Live data** — web/news/X search, neural research (Exa), prediction markets (Polymarket/Kalshi), DEX + crypto prices
-
----
-
-## Data + Intelligence
-
-### [BlockRun MCP](https://github.com/BlockRunAI/blockrun-mcp) — Real-time data for Claude Code
-
-Markets, research, X/Twitter, crypto, image & video generation — all inside Claude Code.
-
-```bash
-claude mcp add blockrun npx -y @blockrun/mcp@latest
-```
-
-| Tool | What | Cost |
-|------|------|------|
-| `blockrun_chat` | GPT, Claude, Gemini, Grok, Qwen, DeepSeek — the full catalog | per token |
-| `blockrun_image` | gpt-image-2, Nano Banana Pro, Grok Imagine | $0.02–0.10 |
-| `blockrun_video` | Sora 2, Seedance 2.0, with synced audio | per second |
-| `blockrun_music` | MiniMax music — full tracks | per track |
-| `blockrun_speech` | ElevenLabs TTS + sound effects | from $0.05/1k chars |
-| `blockrun_realface` | Real-person video — liveness enrollment | $0.01 |
-| `blockrun_search` | Live web + news (Grok) | ~$0.01 |
-| `blockrun_exa` | Neural research (Exa) — answers, contents | $0.002–0.012 |
-| `blockrun_markets` | Polymarket, Kalshi, sports odds | $0.001 |
-| `blockrun_surf` | Crypto data — 80+ on-chain endpoints | from $0.003 |
-| `blockrun_price` | Pyth quotes — crypto, FX, stocks | free |
-| `blockrun_dex` | Live DEX prices (DexScreener) | free |
-| `blockrun_rpc` | Raw JSON-RPC — 40+ chains | $0.004 |
-| `blockrun_defi` | DefiLlama — TVL, yields, token prices | per call |
-| `blockrun_modal` | Sandboxed code exec — optional GPU | per run |
-| `blockrun_phone` | AI voice calls + US/CA numbers | $0.54/call |
-| `blockrun_models` | Model catalog & pricing | free |
-| `blockrun_wallet` | USDC balance & agent budgets | free |
-
----
-
-## Full Ecosystem
-
-| Project | What | Install |
-|---------|------|---------|
-| [Franklin](https://github.com/BlockRunAI/Franklin) | Open-source AI coding agent | `npm i -g @blockrun/franklin` |
-| [Franklin-Trading](https://github.com/BlockRunAI/Franklin-Trading) | Autonomous trading agent with a wallet | `git clone` |
-| [franklin-canvas](https://github.com/BlockRunAI/franklin-canvas) | Chat + node-canvas workflow UI for Franklin | — |
-| [ClawRouter](https://github.com/BlockRunAI/ClawRouter) | Smart LLM router for OpenClaw | `curl -fsSL https://blockrun.ai/ClawRouter-update \| bash` |
-| [XClawRouter](https://github.com/BlockRunAI/XClawRouter) | LLM router powered by OKX OnchainOS wallet | `git clone` |
-| [ClawRouter-Hermes](https://github.com/BlockRunAI/ClawRouter-Hermes) | ClawRouter plugin for NousResearch Hermes | `git clone` |
-| [blockrun-mcp](https://github.com/BlockRunAI/blockrun-mcp) | Real-time data for Claude Code | `claude mcp add blockrun npx -y @blockrun/mcp@latest` |
-| [blockrun-llm](https://github.com/BlockRunAI/blockrun-llm) | Python SDK | `pip install blockrun-llm` |
-| [blockrun-llm-ts](https://github.com/BlockRunAI/blockrun-llm-ts) | TypeScript SDK | `npm i @blockrun/llm` |
-| [blockrun-llm-go](https://github.com/BlockRunAI/blockrun-llm-go) | Go SDK | `go get` |
-| [blockrun-litellm](https://github.com/BlockRunAI/blockrun-litellm) | LiteLLM adapter (custom provider / proxy) | — |
-| [blockrun-nano](https://github.com/BlockRunAI/blockrun-nano) | Gas-free batched USDC via Circle Gateway | — |
-| [Prompt-Case-Hub](https://github.com/BlockRunAI/Prompt-Case-Hub) | Unified image/video/text prompt-case library | — |
-| [awesome-finance-mcp](https://github.com/BlockRunAI/awesome-finance-mcp) | Curated finance MCP servers | — |
-| [polymarket-agent](https://github.com/BlockRunAI/polymarket-agent) | AI prediction market trading | `git clone` |
-| [alpha-mcp](https://github.com/BlockRunAI/alpha-mcp) | Crypto trading signals | `git clone` |
-| [branding](https://github.com/BlockRunAI/branding) | Official brand kit — logos, colors, usage | — |
-
----
-
-## How It Works
-
-```
-Your App / Agent
-      ↓
-  Franklin (standalone)     OR     ClawRouter (OpenClaw plugin)
-      ↓                                ↓
-  BlockRun API — one OpenAI-compatible endpoint, priced per call
-      ↓
-  API key  ────  card top-up or monthly invoice, in dollars
-  Wallet   ────  x402 micropayments, USDC on Solana & Base
-                 (+ gas-free batched USDC on Polygon / Arbitrum /
-                   Optimism / Unichain via Circle Gateway)
-      ↓
-  every frontier model + real-time data + image / video / music
-```
-
-The wallet door is the one most gateways can't offer: **payment is authentication**, so an autonomous agent needs no account and no credential to hand over — the signature that pays also proves who's calling. The card door exists because most teams shouldn't have to care.
+More integrations: [elizaos-plugin-blockrun](https://github.com/BlockRunAI/elizaos-plugin-blockrun) · [lobstercash-blockrun-skill](https://github.com/BlockRunAI/lobstercash-blockrun-skill) · [blockrun-llm-xrpl](https://github.com/BlockRunAI/blockrun-llm-xrpl) · [awesome-blockrun](https://github.com/BlockRunAI/awesome-blockrun) · [awesome-finance-mcp](https://github.com/BlockRunAI/awesome-finance-mcp) · [branding](https://github.com/BlockRunAI/branding)
 
 ---
 
 <div align="center">
 
-**[Get started](https://user.blockrun.ai)** · **[Docs](https://blockrun.ai/docs)** · **[Models](https://blockrun.ai/models)** · **[Enterprise](https://blockrun.ai/enterprise)** · **[x402](https://x402.org)**
+**[Agent testing](https://blockrun.ai/agent-testing)** · **[For AI labs](https://blockrun.ai/ai-labs)** · **[Developers](https://blockrun.ai/developers)** · **[Docs](https://blockrun.ai/docs)** · **[Live settlements](https://blockrun.ai/live)**
 
-Built for agents. Pay for the outcome.
+Working with AWS, Circle and the Solana Foundation. Backed by HF0.
 
 </div>
